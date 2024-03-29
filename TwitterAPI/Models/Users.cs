@@ -2,7 +2,7 @@
 
 namespace TwitterAPI.Models
 {
-    public class User
+    public class Users
     { 
         public string Name { get; set; }
 

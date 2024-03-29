@@ -63,9 +63,9 @@ namespace TwitterAPI.Controllers
         [HttpGet]
         [ApiVersion("1.0")]
         [Route("Users")]
-        public ActionResult<User> GetUsers()
+        public ActionResult<Users> GetUsers()
         {
-            var users = _context.User.Select(user =>
+            var users = _context.Users.Select(user =>
             new
             {
                 user.Username,
@@ -85,11 +85,11 @@ namespace TwitterAPI.Controllers
         [HttpPost]
         [ApiVersion("1.0")]
         [Route("createUser")]
-        public ActionResult<User> createUser([FromBody] UserDTO userDTO)
+        public ActionResult<Users> createUser([FromBody] UsersDTO userDTO)
         {
             if (userDTO != null)
             {
-                User user = new User();
+                Users user = new Users();
                 user.Username = userDTO.Username;
                 user.Name = userDTO.Name;
                 user.Email = userDTO.Email;
@@ -100,7 +100,7 @@ namespace TwitterAPI.Controllers
                 user.Status = userDTO.Status;
                 user.CreatedAt = DateTime.Now;
                 user.UpdatedAt = DateTime.Now;
-                _context.User.Add(user);
+                _context.Users.Add(user);
                 _context.SaveChanges();
                 return Ok("Tweet posted");
             }

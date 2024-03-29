@@ -8,7 +8,7 @@ namespace TwitterAPI.Models
         {
         }
 
-        public DbSet<User> User { get; set; }
+        public DbSet<Users> Users { get; set; }
         public DbSet<Tweet> Tweet { get; set; }
     }
  
