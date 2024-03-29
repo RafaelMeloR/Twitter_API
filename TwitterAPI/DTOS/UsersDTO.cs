@@ -2,7 +2,7 @@
 
 namespace TwitterAPI.DTOS
 {
-    public class UserDTO
+    public class UsersDTO
     {
         public string Name { get; set; }
         public string Username { get; set; }
