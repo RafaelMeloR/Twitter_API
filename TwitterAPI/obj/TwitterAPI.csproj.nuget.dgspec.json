@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Dell1\\Documents\\GitHub\\Vanier\\5th Semenester\\Transactional-Web-Applications\\POC TWITTER\\TwitterAPI\\TwitterAPI\\TwitterAPI.csproj": {}
+    "C:\\Users\\Dell1\\Documents\\GitHub\\Vanier\\5th Semenester\\Transactional-Web-Applications\\POC TWITTER\\Twitter_POC_CRUD\\TwitterAPI\\TwitterAPI\\TwitterAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Dell1\\Documents\\GitHub\\Vanier\\5th Semenester\\Transactional-Web-Applications\\POC TWITTER\\TwitterAPI\\TwitterAPI\\TwitterAPI.csproj": {
+    "C:\\Users\\Dell1\\Documents\\GitHub\\Vanier\\5th Semenester\\Transactional-Web-Applications\\POC TWITTER\\Twitter_POC_CRUD\\TwitterAPI\\TwitterAPI\\TwitterAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Dell1\\Documents\\GitHub\\Vanier\\5th Semenester\\Transactional-Web-Applications\\POC TWITTER\\TwitterAPI\\TwitterAPI\\TwitterAPI.csproj",
+        "projectUniqueName": "C:\\Users\\Dell1\\Documents\\GitHub\\Vanier\\5th Semenester\\Transactional-Web-Applications\\POC TWITTER\\Twitter_POC_CRUD\\TwitterAPI\\TwitterAPI\\TwitterAPI.csproj",
         "projectName": "TwitterAPI",
-        "projectPath": "C:\\Users\\Dell1\\Documents\\GitHub\\Vanier\\5th Semenester\\Transactional-Web-Applications\\POC TWITTER\\TwitterAPI\\TwitterAPI\\TwitterAPI.csproj",
+        "projectPath": "C:\\Users\\Dell1\\Documents\\GitHub\\Vanier\\5th Semenester\\Transactional-Web-Applications\\POC TWITTER\\Twitter_POC_CRUD\\TwitterAPI\\TwitterAPI\\TwitterAPI.csproj",
         "packagesPath": "C:\\Users\\Dell1\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Dell1\\Documents\\GitHub\\Vanier\\5th Semenester\\Transactional-Web-Applications\\POC TWITTER\\TwitterAPI\\TwitterAPI\\obj\\",
+        "outputPath": "C:\\Users\\Dell1\\Documents\\GitHub\\Vanier\\5th Semenester\\Transactional-Web-Applications\\POC TWITTER\\Twitter_POC_CRUD\\TwitterAPI\\TwitterAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
