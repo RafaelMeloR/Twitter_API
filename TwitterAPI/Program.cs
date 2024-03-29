@@ -12,8 +12,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-string Connect = builder.Configuration.GetConnectionString("DefaultConnection");
-//string Connect = builder.Configuration.GetConnectionString("ExternalConnection");
+//string Connect = builder.Configuration.GetConnectionString("DefaultConnection");
+string Connect = builder.Configuration.GetConnectionString("ExternalConnection");
 builder.Services.AddDbContext<Context>(options =>
 {
      options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
