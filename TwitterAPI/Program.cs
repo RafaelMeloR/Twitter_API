@@ -16,8 +16,8 @@ builder.Services.AddSwaggerGen();
 string Connect = builder.Configuration.GetConnectionString("ExternalConnection");
 builder.Services.AddDbContext<Context>(options =>
 {
-     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
-    //options.UseSqlServer(builder.Configuration.GetConnectionString("ExternalConnection"));
+    // options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("ExternalConnection"));
 });
 
 
