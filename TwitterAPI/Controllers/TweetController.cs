@@ -24,17 +24,21 @@ namespace TwitterAPI.Controllers
         [Route("Tweets")]
         public ActionResult<TweetDTO> GetTweets()
         {
-           var Tweets = _context.Tweet.Select(
-               tweets =>
-               new {
-                     tweets.AuthorId,
-                     tweets.Body,
-                     tweets.Likes,
-                     tweets.ImageUrl,
-                     tweets.Status,
-                     tweets.CreatedAt,
-                     tweets.UpdatedAt
-               }).ToList();
+            var Tweets = _context.Tweet
+        .OrderByDescending(tweets => tweets.CreatedAt) // Order by CreatedAt in descending order
+        .Select(tweets =>
+            new
+            {
+                tweets.AuthorId,
+                tweets.Body,
+                tweets.Likes,
+                tweets.ImageUrl,
+                tweets.Status,
+                tweets.CreatedAt,
+                tweets.UpdatedAt
+            })
+        .ToList();
+
             return Ok(Tweets);
         }
 
