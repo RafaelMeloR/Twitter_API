@@ -129,6 +129,30 @@ namespace TwitterAPI.Controllers
             return Ok(users);
         }
 
+        [HttpGet]
+        [ApiVersion("1.0")]
+        [Route("UsersByName")]
+        public ActionResult<Users> GetUsersByName([FromQuery] string username)
+        {
+            var users = _context.Users
+          .Where(user => user.Username == username)
+          .Select(user => new
+          {
+              user.Username,
+              user.Name,
+              user.Email,
+              user.PhoneNo,
+              user.Password,
+              user.ProfileImage,
+              user.Gender,
+              user.Status,
+              user.CreatedAt,
+              user.UpdatedAt,
+          })
+          .ToList();
+
+            return Ok(users);
+        }
         [HttpPost]
         [ApiVersion("1.0")]
         [Route("createUser")]
