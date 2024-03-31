@@ -22,20 +22,30 @@ namespace TwitterAPI.Controllers
         [HttpGet]
         [ApiVersion("1.0")]
         [Route("Tweets")]
-        public ActionResult<TweetDTO> GetTweets()
+        public ActionResult<IEnumerable<TweetDTO>> GetTweets()
         {
-           var Tweets = _context.Tweet.Select(
-               tweets =>
-               new {
-                     tweets.AuthorId,
-                     tweets.Body,
-                     tweets.Likes,
-                     tweets.ImageUrl,
-                     tweets.Status,
-                     tweets.CreatedAt,
-                     tweets.UpdatedAt
-               }).ToList();
-            return Ok(Tweets);
+            var tweetsWithUsers = _context.Tweet
+                .Join(
+                    _context.Users,
+                    tweet => tweet.AuthorId,
+                    user => user.Username,
+                    (tweet, user) => new TweetDTO
+                    {
+                        Id = tweet.Id,
+                        AuthorId = tweet.AuthorId,
+                        Body = tweet.Body,
+                        Likes = tweet.Likes,
+                        ImageUrl = tweet.ImageUrl,
+                        Status = tweet.Status,
+                        CreatedAt = tweet.CreatedAt,
+                        UpdatedAt = tweet.UpdatedAt,
+                        Name = user.Name,
+                        Username = user.Username,
+                        ProfileImage = user.ProfileImage
+                    })
+                .ToList();
+
+            return Ok(tweetsWithUsers);
         }
 
         [HttpPost]
@@ -59,6 +69,49 @@ namespace TwitterAPI.Controllers
             }
             return BadRequest("Tweet not posted");
         }
+
+        [HttpPut]
+        [ApiVersion("1.0")]
+        [Route("updateTweet/{id}")]
+        public ActionResult<Tweet> UpdateTweet(int id, [FromBody] TweetDTO tweetDTO)
+        {
+            var existingTweet = _context.Tweet.FirstOrDefault(t => t.Id == id);
+
+            if (existingTweet == null)
+            {
+                return NotFound("Tweet not found");
+            }
+
+            existingTweet.Body = tweetDTO.Body;
+            existingTweet.Likes = tweetDTO.Likes;
+            existingTweet.ImageUrl = tweetDTO.ImageUrl;
+            existingTweet.Status = tweetDTO.Status;
+            existingTweet.UpdatedAt = DateTime.Now;
+
+            _context.SaveChanges();
+
+            return Ok("Tweet updated successfully");
+        }
+
+        [HttpDelete]
+        [ApiVersion("1.0")]
+        [Route("deleteTweet/{id}")]
+        public ActionResult DeleteTweet(int id)
+        {
+            var existingTweet = _context.Tweet.FirstOrDefault(t => t.Id == id);
+
+            if (existingTweet == null)
+            {
+                return NotFound("Tweet not found");
+            }
+
+            _context.Tweet.Remove(existingTweet);
+            _context.SaveChanges();
+
+            return Ok("Tweet deleted successfully");
+        }
+
+
 
         [HttpGet]
         [ApiVersion("1.0")]
