@@ -22,30 +22,20 @@ namespace TwitterAPI.Controllers
         [HttpGet]
         [ApiVersion("1.0")]
         [Route("Tweets")]
-        public ActionResult<IEnumerable<TweetDTO>> GetTweets()
+        public ActionResult<TweetDTO> GetTweets()
         {
-            var tweetsWithUsers = _context.Tweet
-                .Join(
-                    _context.Users,
-                    tweet => tweet.AuthorId,
-                    user => user.Username,
-                    (tweet, user) => new TweetDTO
-                    {
-                        Id = tweet.Id,
-                        AuthorId = tweet.AuthorId,
-                        Body = tweet.Body,
-                        Likes = tweet.Likes,
-                        ImageUrl = tweet.ImageUrl,
-                        Status = tweet.Status,
-                        CreatedAt = tweet.CreatedAt,
-                        UpdatedAt = tweet.UpdatedAt,
-                        Name = user.Name,
-                        Username = user.Username,
-                        ProfileImage = user.ProfileImage
-                    })
-                .ToList();
-
-            return Ok(tweetsWithUsers);
+           var Tweets = _context.Tweet.Select(
+               tweets =>
+               new {
+                     tweets.AuthorId,
+                     tweets.Body,
+                     tweets.Likes,
+                     tweets.ImageUrl,
+                     tweets.Status,
+                     tweets.CreatedAt,
+                     tweets.UpdatedAt
+               }).ToList();
+            return Ok(Tweets);
         }
 
         [HttpPost]
