@@ -29,6 +29,7 @@ namespace TwitterAPI.Controllers
         .Select(tweets =>
             new
             {
+                tweets.Id,
                 tweets.AuthorId,
                 tweets.Body,
                 tweets.Likes,
