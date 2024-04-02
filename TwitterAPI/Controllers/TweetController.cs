@@ -62,6 +62,7 @@ namespace TwitterAPI.Controllers
                 _context.SaveChanges();
                 return Ok("Tweet posted");
             }
+            else
             return BadRequest("Tweet not posted");
         }
 
