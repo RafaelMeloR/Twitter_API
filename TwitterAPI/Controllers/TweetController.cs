@@ -60,7 +60,7 @@ namespace TwitterAPI.Controllers
                 tweet.UpdatedAt = DateTime.Now;
                 _context.Tweet.Add(tweet);
                 _context.SaveChanges();
-                return Ok("Tweet posted");
+                return Ok(new { message = "Tweet posted" });
             }
             else
             return BadRequest("Tweet not posted");
