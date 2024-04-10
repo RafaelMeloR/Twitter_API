@@ -89,6 +89,23 @@ namespace TwitterAPI.Controllers
             return Ok("Tweet updated successfully");
         }
 
+        [HttpPut]
+        [ApiVersion("1.0")]
+        [Route("updateTweet/{id}")]
+        public ActionResult<Tweet> Like(int id, [FromBody] TweetDTO tweetDTO)
+        {
+            var existingTweet = _context.Tweet.FirstOrDefault(t => t.Id == id);
+
+            if (existingTweet == null)
+            {
+                return NotFound("Tweet not found");
+            }  
+            existingTweet.Likes = existingTweet.Likes+1;  
+            _context.SaveChanges();
+
+            return Ok("Tweet updated successfully");
+        }
+
         [HttpDelete]
         [ApiVersion("1.0")]
         [Route("deleteTweet/{id}")]
