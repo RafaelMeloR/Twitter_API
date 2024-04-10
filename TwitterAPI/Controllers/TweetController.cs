@@ -92,7 +92,7 @@ namespace TwitterAPI.Controllers
         [HttpPost]
         [ApiVersion("1.0")]
         [Route("likeTweet/{id}")]
-        public ActionResult<Tweet> Like(int id, [FromBody] TweetDTO tweetDTO)
+        public ActionResult<Tweet> Like(int id)
         {
             var existingTweet = _context.Tweet.FirstOrDefault(t => t.Id == id);
 
