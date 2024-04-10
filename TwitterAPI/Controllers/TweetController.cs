@@ -89,7 +89,7 @@ namespace TwitterAPI.Controllers
             return Ok("Tweet updated successfully");
         }
 
-        [HttpPut]
+        [HttpPost]
         [ApiVersion("1.0")]
         [Route("likeTweet/{id}")]
         public ActionResult<Tweet> Like(int id, [FromBody] TweetDTO tweetDTO)
